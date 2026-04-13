@@ -55,6 +55,72 @@ This document tracks architectural decisions, implementation choices, and signif
 
 ---
 
+## 2024-04-13: Created Sprint-Based Milestone Plan
+
+**Decision**: Created detailed 13-sprint implementation plan with actionable deliverables
+
+**Context**: Needed granular project planning beyond high-level phases to track progress systematically and provide clear sprint goals with acceptance criteria.
+
+**What was created**:
+- **File**: `docs/milestones.md` - Comprehensive sprint breakdown
+- **Structure**: 13 two-week sprints covering all 6 phases
+- **Format**: Sprint-like planning with tasks, deliverables, acceptance criteria
+
+**Key planning decisions**:
+
+1. **Sprint duration**: 2 weeks per sprint
+   - Rationale: Balance between agility and meaningful deliverables
+   - Allows for regular retrospectives and course corrections
+
+2. **Definition of Done (DoD)**: Strict criteria for sprint completion
+   - Code quality: Tests passing, no linting errors, TypeScript strict mode
+   - Documentation: API docs, decision log updates, README updates
+   - Testing: Unit + integration tests, manual testing, edge cases
+   - Performance: No regressions, optimized queries, monitored bundle size
+
+3. **Story point estimation**: Fibonacci scale (1, 2, 3, 5, 8, 13)
+   - Rationale: Track velocity and improve future estimates
+   - Example Sprint 1: 21 points across 5 major tasks
+
+4. **Risk mitigation per sprint**: Identified specific risks and mitigations
+   - Finnhub rate limits → Batch requests, retry logic
+   - LLM cost overruns → Hard budget caps, auto-fallback
+   - Form 4 parsing complexity → Accept 20% failure rate
+
+5. **Budget tracking**: Cost estimates per sprint
+   - Phase 4 LLM sentiment: ~$0.23/month
+   - Phase 6 intelligence summaries: ~$0.16/month
+   - Total: <$1/month (well under $50 budget)
+
+**Sprint breakdown**:
+- **Sprints 1-2**: Core platform (data ingestion, API, charts)
+- **Sprint 3**: Performance optimization (caching, indexes)
+- **Sprints 4-5**: News integration (RSS, sentiment)
+- **Sprints 6-7**: LLM sentiment (upgrade from regex, cost monitoring)
+- **Sprints 8-10**: SEC filings (EDGAR, Form 4, summaries)
+- **Sprints 11-13**: Intelligence summary (timeline, AI summaries, launch)
+
+**Success metrics defined**:
+- Technical: Test coverage >80%, API <100ms, uptime >99%
+- Business: Data freshness <24h, sentiment accuracy >80%, costs <$50/month
+
+**Relationship to existing docs**:
+- Complements `phases.md` (high-level) with sprint-level detail
+- References `architecture.md`, `database.md`, `api.md` for technical decisions
+- Uses same 6-phase structure for consistency
+
+**Trade-offs**:
+- Pros: Clear roadmap, trackable progress, realistic estimates
+- Cons: Requires discipline to update, may need adjustments based on velocity
+- Flexibility: Sprint scope can adjust based on actual velocity
+
+**Related docs**:
+- [Phases](phases.md) - High-level 6-phase overview
+- [Milestones](milestones.md) - Detailed sprint-by-sprint plan (NEW)
+- [Development](development.md) - Development workflow and commands
+
+---
+
 ## Template for Future Entries
 
 ### YYYY-MM-DD: [Decision Title]

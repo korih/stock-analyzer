@@ -1,35 +1,26 @@
 {
-  "name": "backend",
+  "name": "@stock-analyzer/backend",
   "version": "1.0.0",
   "private": true,
   "description": "Stock Intelligence Platform - Backend API",
-  "main": "dist/server.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/index.ts",
     "build": "tsc",
-    "start": "node dist/server.js",
+    "start": "node dist/index.js",
     "test": "vitest",
-    "test:watch": "vitest --watch",
-    "test:coverage": "vitest --coverage",
-    "db:migrate": "psql $DATABASE_URL -f src/db/schema.sql",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "db:migrate": "tsx src/db/migrate.ts"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.20.0",
     "@fastify/cors": "^8.5.0",
-    "fastify": "^4.26.0",
-    "node-cron": "^3.0.3",
-    "pg": "^8.11.3",
-    "rss-parser": "^3.13.0",
-    "xml2js": "^0.6.2",
-    "zod": "^3.22.4"
+    "dotenv": "^16.4.1",
+    "fastify": "^4.25.2",
+    "pg": "^8.11.3"
   },
   "devDependencies": {
     "@types/node": "^20.11.5",
-    "@types/node-cron": "^3.0.11",
-    "@types/pg": "^8.11.0",
-    "@types/xml2js": "^0.4.14",
-    "@vitest/coverage-v8": "^1.2.0",
+    "@types/pg": "^8.10.9",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3",
     "vitest": "^1.2.0"
